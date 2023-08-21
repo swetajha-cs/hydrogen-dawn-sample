@@ -108,23 +108,23 @@ function AccountLayout({customer, children}) {
 }
 
 function AcccountMenu() {
-  function isActiveStyle({isActive, isPending}) {
-    return {
-      fontWeight: isActive ? 'bold' : '',
-      color: isPending ? 'grey' : 'black',
-    };
-  }
+  // function isActiveStyle({isActive, isPending}) {
+  //   return {
+  //     fontWeight: isActive ? 'bold' : '',
+  //     color: isPending ? 'grey' : 'black',
+  //   };
+  // }
   return (
     <nav role="navigation">
-      <NavLink to="/account/orders" style={isActiveStyle}>
+      <NavLink to="/account/orders" >
         Orders &nbsp;
       </NavLink>
       &nbsp;|&nbsp;
-      <NavLink to="/account/profile" style={isActiveStyle}>
+      <NavLink to="/account/profile" >
         &nbsp; Profile &nbsp;
       </NavLink>
       &nbsp;|&nbsp;
-      <NavLink to="/account/addresses" style={isActiveStyle}>
+      <NavLink to="/account/addresses">
         &nbsp; Addresses &nbsp;
       </NavLink>
       &nbsp;|&nbsp;

@@ -6,7 +6,7 @@ export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   return (
     <header className="header page-width">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
+      <NavLink prefetch="intent" to="/" end>
         <Image src={shop.brand.logo.image.url} alt={shop.name}></Image>
         {/* <strong>{shop.name}</strong> */}
       </NavLink>
@@ -35,7 +35,6 @@ export function HeaderMenu({menu, viewport}) {
           end
           onClick={closeAside}
           prefetch="intent"
-          style={activeLinkStyle}
           to="/"
         >
           Home
@@ -57,7 +56,6 @@ export function HeaderMenu({menu, viewport}) {
             key={item.id}
             onClick={closeAside}
             prefetch="intent"
-            style={activeLinkStyle}
             to={url}
           >
             {item.title}
@@ -72,7 +70,7 @@ function HeaderCtas({isLoggedIn, cart}) {
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+      <NavLink prefetch="intent" to="/account" >
         {isLoggedIn ? 'Account' : 'Sign in'}
       </NavLink>
       <SearchToggle />
@@ -152,9 +150,9 @@ const FALLBACK_HEADER_MENU = {
   ],
 };
 
-function activeLinkStyle({isActive, isPending}) {
-  return {
-    fontWeight: isActive ? 'bold' : '',
-    color: isPending ? 'grey' : 'black',
-  };
-}
+// function activeLinkStyle({isActive, isPending}) {
+//   return {
+//     fontWeight: isActive ? 'bold' : '',
+//     color: isPending ? 'grey' : 'black',
+//   };
+// }

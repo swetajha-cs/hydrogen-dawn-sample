@@ -31,7 +31,6 @@ function FooterMenu({menu}) {
             end
             key={item.id}
             prefetch="intent"
-            style={activeLinkStyle}
             to={url}
           >
             {item.title}
@@ -84,9 +83,9 @@ const FALLBACK_FOOTER_MENU = {
   ],
 };
 
-function activeLinkStyle({isActive, isPending}) {
-  return {
-    fontWeight: isActive ? 'bold' : '',
-    color: isPending ? 'grey' : 'white',
-  };
-}
+// function activeLinkStyle({isActive, isPending}) {
+//   return {
+//     fontWeight: isActive ? 'bold' : '',
+//     color: isPending ? 'grey' : 'white',
+//   };
+// }
