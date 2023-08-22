@@ -1,6 +1,7 @@
 import {Await, NavLink, useMatches} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image} from '@shopify/hydrogen';
+import {SearchMajor, CustomersMajor, CartMajor} from '@shopify/polaris-icons';
 
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
@@ -49,6 +50,7 @@ export function HeaderMenu({menu, viewport}) {
           item.url.includes(publicStoreDomain)
             ? new URL(item.url).pathname
             : item.url;
+
         return (
           <NavLink
             className="header-menu-item"
@@ -59,6 +61,7 @@ export function HeaderMenu({menu, viewport}) {
             to={url}
           >
             {item.title}
+            
           </NavLink>
         );
       })}
@@ -70,10 +73,10 @@ function HeaderCtas({isLoggedIn, cart}) {
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
-      <NavLink prefetch="intent" to="/account" >
-        {isLoggedIn ? 'Account' : 'Sign in'}
-      </NavLink>
       <SearchToggle />
+      <NavLink prefetch="intent" to="/account" >
+        {isLoggedIn ? 'Account' : <CustomersMajor/>}
+      </NavLink>
       <CartToggle cart={cart} />
     </nav>
   );
@@ -88,11 +91,11 @@ function HeaderMenuMobileToggle() {
 }
 
 function SearchToggle() {
-  return <a href="#search-aside">Search</a>;
+  return <a href="#search-aside"><SearchMajor /></a>;
 }
 
 function CartBadge({count}) {
-  return <a href="#cart-aside">Cart {count}</a>;
+  return <a href="#cart-aside"><CartMajor/></a>;
 }
 
 function CartToggle({cart}) {

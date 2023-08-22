@@ -132,8 +132,7 @@ aside li {
   background: #fff;
   display: flex;
   height: var(--header-height);
-  padding: 0 1rem;
-  position: sticky;
+  padding: 20px 50px;
   top: 0;
   z-index: 1;
 }
@@ -166,7 +165,6 @@ aside li {
 
 .header-ctas {
   align-items: center;
-  display: flex;
   grid-gap: 1rem;
   margin-left: auto;
 }
