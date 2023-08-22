@@ -1,6 +1,6 @@
-import {useMatches, NavLink} from '@remix-run/react';
+import { useMatches, NavLink } from '@remix-run/react';
 
-export function Footer({menu}) {
+export function Footer({ menu }) {
   return (
     <footer className="footer">
       <FooterMenu menu={menu} />
@@ -8,36 +8,73 @@ export function Footer({menu}) {
   );
 }
 
-function FooterMenu({menu}) {
+function FooterMenu({ menu }) {
   const [root] = useMatches();
   const publicStoreDomain = root?.data?.publicStoreDomain;
   return (
-    <nav className="footer-menu" role="navigation">
-      {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
-        if (!item.url) return null;
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain)
-            ? new URL(item.url).pathname
-            : item.url;
-        const isExternal = !url.startsWith('/');
-        return isExternal ? (
-          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
-            {item.title}
-          </a>
-        ) : (
-          <NavLink
-            end
-            key={item.id}
-            prefetch="intent"
-            to={url}
-          >
-            {item.title}
-          </NavLink>
-        );
-      })}
+    <nav className="footer-menu page-width" role="navigation">
+
+      <div className='footer__blocks-wrapper grid' >
+        {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
+          if (!item.url) return null;
+          // if the url is internal, we strip the domain
+          const url =
+            item.url.includes('myshopify.com') ||
+              item.url.includes(publicStoreDomain)
+              ? new URL(item.url).pathname
+              : item.url;
+          const isExternal = !url.startsWith('/');
+          return isExternal ? (
+            <a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
+              {item.title}
+            </a>
+          ) : (
+            <div className='footer-block' key={item.id}>
+              <NavLink
+                end
+                key={item.id}
+                prefetch="intent"
+                to={url}
+              >
+                <h2>{item.title}</h2>
+              </NavLink>
+              {item.items.length > 0 && (
+                <ul>
+                  {item.items.map(child => (
+                    <MenuItem item={child} key={child.id}/>
+                  ))}
+                </ul>
+              )}
+
+            </div>
+          );
+        })}
+        <div className='footer-block'>
+          <h2>Our mission</h2>
+          <p>Quality materials, good designs, craftsmanship and sustainability.</p>
+        </div>
+      </div>
+
     </nav>
+  );
+}
+
+function MenuItem({ item }) {
+  if (!item.url) return null;
+  const url =
+    item.url.includes('myshopify.com') ||
+      item.url.includes(publicStoreDomain)
+      ? new URL(item.url).pathname
+      : item.url;
+  return (
+    <NavLink
+      end
+      key={item.id}
+      prefetch="intent"
+      to={url}
+    >
+      <li key={item.id}>{item.title}</li>
+    </NavLink>
   );
 }
 
