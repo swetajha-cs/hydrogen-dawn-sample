@@ -3,10 +3,6 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  padding: 0 20px;
-}
-.home {
-  padding-top: 32px;
 }
 .collage {
   display: flex;
@@ -42,4 +38,95 @@
   display: flex;
   align-items: center;
 }
+.header-ctas a svg {
+  height: 2rem;
+  width: 2.5rem;
+  stroke: white;
+}
+.header-ctas a span {
+  line-height: 1;
+  vertical-align: top;
+}
 /* Header */
+/* Hero Section */
+.hero-image {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-blend-mode: var(--blend-mode-image);
+  background-color: var(--bg-color);
+  background-position: center center;
+  background-image: url('https://theme-dawn-demo.myshopify.com/cdn/shop/files/141569803_417219312901458_4638470652865432174_n.jpg?v=1637107084&width=2000');
+}
+
+.home h2 {
+  position: relative;
+  font-size: 52px;
+  font-weight: 400;
+  margin: 0;
+  padding: 4rem 3.5rem;
+  position: absolute;
+  color: white;
+}
+
+
+#image-url{
+  position: fixed;
+  width: 80vw;
+  bottom: 1em;
+  z-index: 20;
+}
+
+/* Search Bar */
+#search-aside aside {
+  height: 100px;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: none;
+  top: 40px;
+}
+
+#search-aside .close {
+  position: absolute;
+    right: 23%;
+    top: 22px;
+    font-size: 50px;
+    opacity: 0.5;
+    font-weight: 200;
+    text-decoration: none;
+}
+
+aside main {
+  width: 100%;
+}
+
+.predictive-search-form {
+  max-width: none;
+  text-align: center;
+}
+
+input[type="search"] {
+  width: 50%;
+}
+.search-bar {
+  position: relative;
+  width: auto;
+}
+.search-btn {
+  width: 40px;
+    height: 34px;
+    position: absolute;
+    right: 25%;
+    top: 5px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+/* Footer */
+#loom-companion-mv3 {
+  display: none;
+}

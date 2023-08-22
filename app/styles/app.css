@@ -254,10 +254,10 @@ aside li {
 * components/Search
 * --------------------------------------------------
 */
-.predictive-search {
+/* .predictive-search {
   height: calc(100vh - var(--header-height) - 40px);
   overflow-y: auto;
-}
+} */
 
 .predictive-search-form {
   background: var(--color-light);

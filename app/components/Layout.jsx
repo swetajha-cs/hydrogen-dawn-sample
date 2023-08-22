@@ -1,6 +1,7 @@
 import {Await} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Aside} from '~/components/Aside';
+import {SearchBar} from '~/components/SearchBar';
 import {Footer} from '~/components/Footer';
 import {Header, HeaderMenu} from '~/components/Header';
 import {AnnouncementBar} from '~/components/AnnouncementBar';
@@ -9,6 +10,7 @@ import {
   PredictiveSearchForm,
   PredictiveSearchResults,
 } from '~/components/Search';
+import {SearchMajor} from '@shopify/polaris-icons';
 
 export function Layout({cart, children = null, footer, header, isLoggedIn}) {
   return (
@@ -44,12 +46,12 @@ function CartAside({cart}) {
 
 function SearchAside() {
   return (
-    <Aside id="search-aside" heading="SEARCH">
+    <SearchBar id="search-aside" heading="SEARCH" className="search-modal">
       <div className="predictive-search">
         <br />
         <PredictiveSearchForm>
           {({fetchResults, inputRef}) => (
-            <div>
+            <div className="search-bar">
               <input
                 name="q"
                 onChange={fetchResults}
@@ -59,13 +61,13 @@ function SearchAside() {
                 type="search"
               />
               &nbsp;
-              <button type="submit">Search</button>
+              <button type="submit" className="search-btn"><SearchMajor /></button>
             </div>
           )}
         </PredictiveSearchForm>
         <PredictiveSearchResults />
       </div>
-    </Aside>
+    </SearchBar>
   );
 }
 

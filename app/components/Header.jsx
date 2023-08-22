@@ -95,7 +95,7 @@ function SearchToggle() {
 }
 
 function CartBadge({count}) {
-  return <a href="#cart-aside"><CartMajor/></a>;
+  return <a href="/cart"><CartMajor/></a>;
 }
 
 function CartToggle({cart}) {
