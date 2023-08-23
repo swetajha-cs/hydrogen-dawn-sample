@@ -1,4 +1,4 @@
-import {defer} from '@shopify/remix-oxygen';
+import { defer } from '@shopify/remix-oxygen';
 import {
   Links,
   Meta,
@@ -10,17 +10,17 @@ import {
   ScrollRestoration,
   isRouteErrorResponse,
 } from '@remix-run/react';
-import favicon from '../public/favicon.svg';
+import favicon from '../public/dawn-favicon.png';
 import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
 import customStyles from './styles/custom.css';
-import {Layout} from '~/components/Layout';
+import { Layout } from '~/components/Layout';
 
 export function links() {
   return [
-    {rel: 'stylesheet', href: resetStyles},
-    {rel: 'stylesheet', href: appStyles},
-    {rel: 'stylesheet', href: customStyles},    
+    { rel: 'stylesheet', href: resetStyles },
+    { rel: 'stylesheet', href: appStyles },
+    { rel: 'stylesheet', href: customStyles },
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -29,17 +29,17 @@ export function links() {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    { rel: 'icon', type: 'image/svg+xml', href: favicon },
   ];
 }
 
-export async function loader({context}) {
-  const {storefront, session, cart} = context;
+export async function loader({ context }) {
+  const { storefront, session, cart } = context;
   const customerAccessToken = await session.get('customerAccessToken');
   const publicStoreDomain = context.env.PUBLIC_STORE_DOMAIN;
 
   // validate the customer access token is valid
-  const {isLoggedIn, headers} = await validateCustomerAccessToken(
+  const { isLoggedIn, headers } = await validateCustomerAccessToken(
     customerAccessToken,
     session,
   );
@@ -71,7 +71,7 @@ export async function loader({context}) {
       isLoggedIn,
       publicStoreDomain,
     },
-    {headers},
+    { headers },
   );
 }
 
@@ -154,7 +154,7 @@ async function validateCustomerAccessToken(customerAccessToken, session) {
   let isLoggedIn = false;
   const headers = new Headers();
   if (!customerAccessToken?.accessToken || !customerAccessToken?.expiresAt) {
-    return {isLoggedIn, headers};
+    return { isLoggedIn, headers };
   }
   const expiresAt = new Date(customerAccessToken.expiresAt);
   const dateNow = new Date();
@@ -166,7 +166,7 @@ async function validateCustomerAccessToken(customerAccessToken, session) {
     isLoggedIn = true;
   }
 
-  return {isLoggedIn, headers};
+  return { isLoggedIn, headers };
 }
 
 const MENU_FRAGMENT = `#graphql
